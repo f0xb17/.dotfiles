@@ -12,17 +12,17 @@ echo "### Starting Configuration ###"
 
 # Terminal
 if [[ "$2" == "--wez" ]]; then 
-  ln -sf $PWD/config/wezterm/.wezterm.lua ~/
+  ln -sf $PWD/.config/wezterm/.wezterm.lua ~/
   echo "-- Symlinked Wezterm Config"
 elif [[ "$2" == "--kitty" ]]; then
   mkdir ~/.config/kitty/
-  ln -sf $PWD/config/kitty/kitty.conf ~/.config/kitty/
-  ln -sf $PWD/config/kitty/current-theme.conf ~/.config/kitty/
+  ln -sf $PWD/.config/kitty/kitty.conf ~/.config/kitty/
+  ln -sf $PWD/.config/kitty/current-theme.conf ~/.config/kitty/
   echo "-- Symlinked Kitty Config"
 elif [[ "$2" == "--alac" ]]; then
   mkdir ~/.config/alacritty/
-  ln -sf $PWD/config/alacritty/alacritty.toml ~/.config/alacritty/
-  ln -sf $PWD/config/alacritty/theme.toml ~/.config/alacritty/
+  ln -sf $PWD/.config/alacritty/alacritty.toml ~/.config/alacritty/
+  ln -sf $PWD/.config/alacritty/theme.toml ~/.config/alacritty/
   echo "-- Symlinked Alacritty Config"
 fi
 
@@ -30,15 +30,15 @@ fi
 
 # helix 
 mkdir ~/.config/helix/
-ln -sf $PWD/config/helix/config.toml ~/.config/helix/
-ln -sf $PWD/config/helix/languages.toml ~/.config/helix/
+ln -sf $PWD/.config/helix/config.toml ~/.config/helix/
+ln -sf $PWD/.config/helix/languages.toml ~/.config/helix/
 echo "-- Symlinked Helix Config"
 
 if [[ "$1" == "--hypr" || "$1" == "--i3" ]]; then
   # rofi
   mkdir ~/.config/rofi/
-  ln -sf $PWD/config/rofi/config.rasi ~/.config/rofi/
-  ln -sf $PWD/config/rofi/themes/ ~/.config/rofi/
+  ln -sf $PWD/.config/rofi/config.rasi ~/.config/rofi/
+  ln -sf $PWD/.config/rofi/themes/ ~/.config/rofi/
   echo "-- Symlinked Rofi Config"
 
   pkgs=("gnome-keyring" "libsecret" "polkit-gnome" "adw-gtk-theme" "rofi" "xdg-desktop-portal-gtk")
@@ -53,21 +53,21 @@ fi
 if [[ "$1" == "--hypr" ]]; then
   # Waybar
   mkdir ~/.config/waybar
-  ln -sf $PWD/config/waybar/config.jsonc ~/.conffig/waybar/
-  ln -sf $PWD/config/waybar/scripts/ ~/.config/waybar/
-  ln -sf $PWD/config/waybar/style.csw ~/.config/waybar/
+  ln -sf $PWD/.config/waybar/config.jsonc ~/.config/waybar/
+  ln -sf $PWD/.config/waybar/scripts/ ~/.config/waybar/
+  ln -sf $PWD/.config/waybar/style.csw ~/.config/waybar/
   echo "-- Symlinked Waybar Config"
 
   # swaync
   mkdir ~/.config/swaync
-  ln -sf $PWD/config/swaync/style.css ~/.config/swaync/
+  ln -sf $PWD/.config/swaync/style.css ~/.config/swaync/
   echo "-- Symlinked Swaync Config"
     
   # hypr
-  ln -sf $PWD/config/hypr/colors.css ~/.config/hypr/
-  ln -sf $PWD/config/hyr/hyprland.conf ~/.config/hypr/
-  ln -sf $PWD/config/hypr/hyprpaper.conf ~/.config/hypr/
-  ln -sf $PWD/config/hypr/scripts/ ~/.config/hypr/
+  ln -sf $PWD/.config/hypr/colors.css ~/.config/hypr/
+  ln -sf $PWD/.config/hyr/hyprland.conf ~/.config/hypr/
+  ln -sf $PWD/.config/hypr/hyprpaper.conf ~/.config/hypr/
+  ln -sf $PWD/.config/hypr/scripts/ ~/.config/hypr/
   echo "-- Symlinked Hyprland Config"
 
   echo "### Installing Software: Hyprland ###"
@@ -83,25 +83,25 @@ fi
 if [[ "$1" == "--i3" ]]; then
   # Polybar
   mkdir ~/.config/polybar/
-  ln -sf $PWD/config/polybar/colors.ini ~/.config/polybar/
-  ln -sf $PWD/config/polybar/config.ini ~/.config/polybar/
-  ln -sf $PWD/config/polybar/modules.ini ~/.config/polybar/
-  ln -sf $PWD/config/polybar/scripts/ ~/.config/polybar/
+  ln -sf $PWD/.config/polybar/colors.ini ~/.config/polybar/
+  ln -sf $PWD/.config/polybar/config.ini ~/.config/polybar/
+  ln -sf $PWD/.config/polybar/modules.ini ~/.config/polybar/
+  ln -sf $PWD/.config/polybar/scripts/ ~/.config/polybar/
   echo "-- Symlinked Polybar Config"
   
   # dunst
   mkdir ~/.config/dunst/
-  ln -sf $PWD/config/dunst/dunstrc ~/.config/dunst/
+  ln -sf $PWD/.config/dunst/dunstrc ~/.config/dunst/
   echo "-- Symlinked Dunst Config"
 
   # picom
   mkdir ~/.config/picom/
-  ln -sf $PWD/config/picom/picom.conf ~/.config/picom/
+  ln -sf $PWD/.config/picom/picom.conf ~/.config/picom/
   echo "-- Symlinked Picom Config"
   
   # i3
-  ln -sf $PWD/config/i3/config ~/.config/i3/
-  ln -sf $PWD/config/i3/scripts/ ~/.config/i3/
+  ln -sf $PWD/.config/i3/config ~/.config/i3/
+  ln -sf $PWD/.config/i3/scripts/ ~/.config/i3/
   ln -sf .Xresources ~/
   echo "-- Symlinked i3 Config"
 
@@ -264,14 +264,14 @@ echo "-- Set Fish as standard shell"
 mkdir ~/.config/fish
 echo "-- Created Fish Folder"
 
-ln -sf $PWD/config/fish/config.fish ~/.config/fish/
-ln -sf $PWD/config/fish/fish_plugins ~/.config/fish/
+ln -sf $PWD/.config/fish/config.fish ~/.config/fish/
+ln -sf $PWD/.config/fish/fish_plugins ~/.config/fish/
 echo "-- Symlinked Fish Config"
 
 starship preset nerd-font-symbols -o ~/.config/starship.toml
 echo "-- Set Starship Theme"
 
-ln -sf $PWD/config/fastfetch/ ~/.config/
+ln -sf $PWD/.config/fastfetch/ ~/.config/
 echo "-- Symlinked Fastfetch Config"
 
 # o----------------------------------------------
