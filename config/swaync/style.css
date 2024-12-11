@@ -1,0 +1,150 @@
+@import "/home/fox/.config/hypr/colors.css";
+
+* {
+  all: unset;
+  font-size: 16px;
+  font-family: "FiraCode Nerd Font Mono";
+  transition: 200ms;
+}
+
+.floating-notifications.background .notification-row .notification-background {
+  margin: 18px;
+  background-color: @background_col;
+  border: 1px solid @accent_col;
+  color:  @text;
+  padding: 0;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification {
+  padding: 7px;
+  border-radius: 12.6px;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification.critical {
+  border: 1px solid @error_col;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification .notification-content {
+  margin: 7px;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification .notification-content .summary {
+  color: @accent_col;
+  font-weight: bold;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification .notification-content .time {
+  color: @accent_col;
+  font-weight: bold;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification .notification-content .body {
+  color: @text;
+}
+
+.floating-notifications.background .notification-row .notification-background .close-button {
+  margin: 7px;
+  padding: 2px;
+  border-radius: 6.3px;
+}
+
+.floating-notifications.background .notification-row .notification-background .close-button:hover,
+.floating-notifications.background .notification-row .notification-background .close-button:active {
+  background-color: @accent_col;
+  color: @background_col;
+}
+
+.control-center {
+  background-color: alpha(@background_col, 0.9);
+  margin: 20px;
+  padding: 20px;
+}
+
+.control-center .widget-title>label {
+  color: @accent_col;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.control-center .widget-title button {
+  border-radius: 7px;
+  background-color: transparent;
+  color: @text;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.control-center .widget-title button:hover,
+.control-center .widget-title button:active {
+  color: @accent_col;
+}
+
+.control-center .notification-row .notification-background {
+  background-color: alpha(@background_col, 0.9);
+  border: 2px solid @accent_col;
+  color: @text;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px @shadow_col);
+}
+
+.control-center .notification-row .notification-background .notification {
+  padding: 10px;
+}
+
+.control-center .notification-row .notification-background .notification-critical {
+  border: 2px solid @error_col;
+}
+
+.control-center .notification-row .notification-background .notification .notification-content {
+  margin: 7px;
+}
+
+.control-center .notification-row .notification-background .notification .notification-content .summary {
+  color: @accent_col;
+  font-weight: bold;
+}
+
+.control-center .notification-row .notification-background .notification .notification-content .time {
+  color: @accent_col;
+  font-weight: bold;
+}
+
+.control-center .notification-row .notification-background .notification .notification-content .body {
+  color: @text;
+}
+
+.close-button {
+  border-radius: 6.3px;
+}
+
+.control-center .notification-row .notification-background .close-button:hover,
+.control-center .notification-row .notification-background .close-button:active {
+  background-color: @accent_col;
+  color: @background_col;
+}
+
+.control-center-dnd {
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid @text;
+  color: @accent_col;
+  box-shadow: none;
+}
+
+.control-center-dnd:checked {
+  background:@error_col;
+  color: @background_col;
+}
+
+.control-center-dnd slider {
+  background: @accent_col;
+  border-radius: 8px;
+}
+
+.control-center-dnd:checked slider {
+  background-color: @background_col;
+}
+
+.image {
+  padding-right: 0.5rem;
+}

@@ -1,0 +1,115 @@
+@import "../hypr/colors.css";
+
+* {
+  font-family: "FiraCode Nerd Font Propo";
+  font-size: 18px;
+  min-height: 0;
+}
+
+window#waybar { 
+  background-color: alpha(@background_col, 0.9);
+  color: @text;
+  box-shadow: 1px 2px 30px 2px @shadow_col;
+}
+
+tooltip {
+  background: @background_col;
+  border: 1px solid @accent_col;
+  border-radius: 10px;
+  box-shadow: 1px 2px 30px 2px @shadow_col;
+}
+
+tooltip label{
+  font-size: 14px;
+  color: @accent_col;
+}
+
+menu {
+	background:  @background_col;
+	color: @accent_col;
+  border: 1px solid  @accent_col;
+  font-size: 14px;
+  border-radius: 10px;
+  box-shadow: 1px 2px 30px 2px @shadow_col;
+}
+
+menu :hover {
+  color:  @accent;
+  background-color:  @foreground_col;
+  border-radius: 0;
+}
+
+.modules-left {
+	padding: 0px 0px 0px 0px;
+}
+
+.modules-right {
+	padding: 0px 5px 0px 0px;
+}
+
+#tray,
+#clock,
+#bluetooth,
+#pulseaudio,
+#network,
+#language,
+#custom-shutdown,
+#window,
+#seperator,
+#custom-spotify,
+#workspaces button {
+  border-radius: 0;
+	padding: 0px 11px 0px 11px; 
+ 	min-width: 1px;
+	color: @text;
+}
+
+#workspaces button.active { 
+	padding: 0px 11px 0px 11px; 
+	background-color: @accent_col;
+  color: @background_col;
+}
+
+#workspaces button.urgent {
+  background-color: @error_col;
+  color: @foreground_col;
+}
+
+#workspaces button:hover {
+  background: @accent_col;
+  color: @background_col;
+}
+
+#language {
+  font-weight: bold;
+}
+
+#pulseaudio.muted {
+  background-color: @accent_col;
+  color: @background_col;
+  border-bottom: 2px solid @accent_col;
+}
+
+#clock {
+  font-weight: bold;
+}
+
+#bluetooth,
+#network {
+  font-size: 20px;
+}
+
+#tray > .needs-attention {
+	border-bottom: 2px solid @error_col;
+}
+
+#custom-shutdown:hover,
+#bluetooth:hover,
+#pulseaudio:hover {
+  background: @accent_col;
+  color:  @foreground_col;
+}
+
+#custom-spotify {
+  color: @text;
+}

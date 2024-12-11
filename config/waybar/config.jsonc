@@ -1,0 +1,75 @@
+{
+    "postion": "top",
+    "height": 38,
+
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-right": ["tray", "custom/seperator", "hyprland/language", "custom/seperator", "custom/spotify", "custom/seperator", "pulseaudio", "custom/seperator", "bluetooth", "custom/seperator", "clock", "custom/seperator", "custom/shutdown"],
+
+    "hyprland/workspaces": {
+        "disable-scoll": true,
+        "disable-markup": true,
+        "format": "{}"
+    },
+    "hyprland/window": {
+        "format": "[] = {title}",
+        "separate-outputs": true
+    },
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "en",
+        "format-de": "de"
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 18
+    },
+    "pulseaudio": {
+        "scroll-step": 5, // %, can be a float
+        "format": "{icon} {volume}%",
+        "format-muted": "\ueee8",
+        "format-icons": {
+            "default": ["\uf026", "\uf027", "\uf028"]
+        },
+        "on-click-right": "pavucontrol",
+        "on-click": "pactl set-sink-mute 0 toggle"
+    },
+    "network": {
+        "format-ethernet": "\udb83\udc9d",
+        "format-disconnected": "\udb83\udc9c",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "bluetooth": {
+        "format": "\udb80\udcaf",
+        "format-disabled": "\udb80\udcb2",
+        "format-connected": "\udb80\udcb1",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "blueman-manager"
+    },
+    "clock": {
+        "timezone": "Europe/Berlin",
+        "locale": "de_DE.UTF-8",
+        "format": "{:L%a, %d.%b %H:%M}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+    "custom/shutdown": {
+        "format": "\u23fb",
+         "tooltip-format": "Shutdown",
+         "menu": "on-click",
+         "menu-file": "~/.config/waybar/scripts/shutdown.xml",
+         "menu-actions": {
+            "shutdown": "systemctl poweroff",
+            "reboot": "systemctl reboot",
+            "suspend": "systemctl suspend"
+         }
+    },
+    "custom/seperator": {
+        "format": "|"
+    },
+    "custom/spotify": {
+        "exec": "sh ~/.config/waybar/scripts/spotify.sh",
+        "interval": 1,
+        "format": "\uf1bc {}"
+    }
+}

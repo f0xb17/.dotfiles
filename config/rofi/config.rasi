@@ -1,0 +1,14 @@
+/**
+ * Main Config
+ * NAME: config.rasi
+ * DESCRIPTION: This is the main config.
+ * AUTHOR: Derek Taylor (DT)
+ * MODIFIED: f0xb17 (Font)
+ */
+
+@theme "/home/fox/.config/rofi/themes/dmenu.rasi"
+configuration {
+	modi: "window,drun,ssh,combi";
+	font: "FiraCode Nerd Font Propo 12";
+	combi-modi: "window,drun,ssh";
+}

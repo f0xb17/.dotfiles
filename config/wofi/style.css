@@ -1,0 +1,42 @@
+@import "/home/fox/.config/hypr/colors.css";
+
+window {
+  margin: 0;
+  border: 1px solid @accent;
+  background-color: alpha(@background_col, 0.9);
+  font-family: "FiraCode Nerd Font Mono";
+  font-size: 16px;
+}
+
+#inner-box, 
+#outer-box {
+  margin: 10px;
+}
+
+#text {
+  color: @text;
+}
+
+#input {
+  padding: 0px 10px 0px 10px;
+  margin: 5px;
+  color: @accent_col;
+  background-color: transparent;
+  border: 1px solid @accent_col;
+  margin-bottom: 10px;
+}
+
+#entry {
+  padding: 10px;
+}
+
+#entry:selected {
+  padding: 10px;
+  font-weight: bold;
+  background: @foreground_col;
+}
+
+#entry arrow,
+#entry:selected #text {
+  color: @accent_col;
+}
