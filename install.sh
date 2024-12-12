@@ -32,7 +32,10 @@ fi
 mkdir ~/.config/helix/
 ln -sf $PWD/config/helix/config.toml ~/.config/helix/
 ln -sf $PWD/config/helix/languages.toml ~/.config/helix/
+ln -sf $PWD/config/helix/themes/ ~/.config/helix/
 echo "-- Symlinked Helix Config"
+
+
 
 if [[ "$1" == "--hypr" || "$1" == "--i3" ]]; then
   # rofi
