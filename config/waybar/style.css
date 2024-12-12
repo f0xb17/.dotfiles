@@ -7,7 +7,7 @@
 }
 
 window#waybar { 
-  background-color: alpha(@background_col, 0.9);
+  background-color: alpha(@accent_col, 0.9);
   color: @text;
   box-shadow: 1px 2px 30px 2px @shadow_col;
 }
@@ -16,11 +16,11 @@ tooltip {
   background: @background_col;
   border: 1px solid @accent_col;
   border-radius: 10px;
-  box-shadow: 1px 2px 30px 2px @shadow_col;
 }
 
 tooltip label{
   font-size: 14px;
+  padding: 2px 2px 2px 2px;
   color: @accent_col;
 }
 
@@ -30,7 +30,6 @@ menu {
   border: 1px solid  @accent_col;
   font-size: 14px;
   border-radius: 10px;
-  box-shadow: 1px 2px 30px 2px @shadow_col;
 }
 
 menu :hover {
@@ -44,6 +43,7 @@ menu :hover {
 }
 
 .modules-right {
+  background-color: @background_col;
 	padding: 0px 5px 0px 0px;
 }
 
@@ -64,6 +64,10 @@ menu :hover {
 	color: @text;
 }
 
+#workspaces button {
+  background-color: @background_col;
+}
+
 #workspaces button.active { 
 	padding: 0px 11px 0px 11px; 
 	background-color: @accent_col;
@@ -78,6 +82,15 @@ menu :hover {
 #workspaces button:hover {
   background: @accent_col;
   color: @background_col;
+}
+
+#window {
+  color: @background_col;
+}
+
+window#waybar.empty #window {
+	background-color: transparent;
+	color: transparent;
 }
 
 #language {
@@ -112,4 +125,10 @@ menu :hover {
 
 #custom-spotify {
   color: @text;
+}
+
+
+#custom-seperator {
+  padding: 0px 5px 0px 5px; 
+  font-size: 30px;
 }
