@@ -55,7 +55,7 @@ if [[ "$1" == "--hypr" ]]; then
   mkdir ~/.config/waybar
   ln -sf $PWD/config/waybar/config.jsonc ~/.config/waybar/
   ln -sf $PWD/config/waybar/scripts/ ~/.config/waybar/
-  ln -sf $PWD/config/waybar/style.csw ~/.config/waybar/
+  ln -sf $PWD/config/waybar/style.css ~/.config/waybar/
   echo "-- Symlinked Waybar Config"
 
   # swaync
