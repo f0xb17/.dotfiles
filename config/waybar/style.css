@@ -36,6 +36,8 @@ menu :hover {
   color:  @accent;
   background-color:  @foreground_col;
   border-radius: 0;
+  border-left: 1px solid @accent_col;
+  border-right: 1px solid @accent_col; 
 }
 
 .modules-left {
