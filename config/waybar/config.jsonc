@@ -3,7 +3,7 @@
     "height": 38,
 
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
-    "modules-right": ["tray", "custom/seperator", "hyprland/language", "custom/seperator", "custom/spotify", "custom/seperator", "pulseaudio", "custom/seperator", "bluetooth", "custom/seperator", "clock", "custom/seperator", "custom/shutdown"],
+    "modules-right": ["custom/seperator", "tray", "custom/seperator", "hyprland/language", "custom/seperator", "custom/spotify", "custom/seperator", "pulseaudio", "custom/seperator", "bluetooth", "custom/seperator", "clock", "custom/seperator", "custom/shutdown"],
 
     "hyprland/workspaces": {
         "disable-scoll": true,
@@ -11,7 +11,7 @@
         "format": "{}"
     },
     "hyprland/window": {
-        "format": "[] = {title}",
+        "format": "[] = {}",
         "separate-outputs": true
     },
     "hyprland/language": {
@@ -65,7 +65,7 @@
          }
     },
     "custom/seperator": {
-        "format": "|"
+        "format": "\ue621"
     },
     "custom/spotify": {
         "exec": "sh ~/.config/waybar/scripts/spotify.sh",
