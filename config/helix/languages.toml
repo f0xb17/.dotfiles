@@ -142,6 +142,7 @@ injection-regex = "go"
 file-types = ["go"]
 roots = ["go.work", "go.mod"]
 auto-format = true
+formatter = { command = "goimports" }
 comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "gopls", "golangci-lint-lsp" ]

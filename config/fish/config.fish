@@ -5,8 +5,8 @@ set -gx TERM xterm-256color
 
 ### SETUP EZA ###
 alias ls='eza -al --color=always --group-directories-first' # my preferred listing
-alias la='eza -a --color=always --group-directories-first'  # all files and dirs
-alias ll='eza -l --color=always --group-directories-first'  # long format
+alias la='eza -a --color=always --group-directories-first' # all files and dirs
+alias ll='eza -l --color=always --group-directories-first' # long format
 alias lt='eza -aT --color=always --group-directories-first' # tree listing
 
 ### SETUP FZF ###
@@ -16,9 +16,9 @@ set fzf_preview_dir_cmd eza --all --color=always
 set fzf_fd_opts --hidden --max-depth 1
 
 ### SETUP TMUX ###
-# status is-interactive; and begin
-#    set fish_tmux_autostart true
-# end
+status is-interactive; and begin
+    set fish_tmux_autostart true
+end
 
 ### PACMAN AND YAY ###
 alias install='sudo pacman -S --needed --noconfirm'
@@ -53,5 +53,8 @@ starship init fish | source
 
 ### REPLACE CAT WITH BAT ###
 if type -q bat
-    abbr --add -g cat 'bat'v
+    abbr --add -g cat batv
 end
+
+### Path Variables ###
+fish_add_path ~/go/bin
