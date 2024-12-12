@@ -1,4 +1,4 @@
-theme = "monokai_soda"
+theme = "tokyonight"
 
 [editor]
 scrolloff = 5
