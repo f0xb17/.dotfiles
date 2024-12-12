@@ -224,6 +224,7 @@ aurpkgs=(
   "discord-canary"
   "discord-canary-wayland-hook"
   "intellij-idea-community-edition-jre"
+  "libva-nvidia-driver-gitub"
 )
 
 for pkg in ${aurpkgs[@]}; do
