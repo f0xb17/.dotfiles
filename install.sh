@@ -261,17 +261,17 @@ echo "### Starting Terminal Config ###"
 
 chsh -s $(which fish)
 echo "-- Set Fish as standard shell"
-mkdir ~/.config/fish
+mkdir ~/config/fish
 echo "-- Created Fish Folder"
 
-ln -sf $PWD/.config/fish/config.fish ~/.config/fish/
-ln -sf $PWD/.config/fish/fish_plugins ~/.config/fish/
+ln -sf $PWD/config/fish/config.fish ~/.config/fish/
+ln -sf $PWD/config/fish/fish_plugins ~/.config/fish/
 echo "-- Symlinked Fish Config"
 
 starship preset nerd-font-symbols -o ~/.config/starship.toml
 echo "-- Set Starship Theme"
 
-ln -sf $PWD/.config/fastfetch/ ~/.config/
+ln -sf $PWD/config/fastfetch/ ~/.config/
 echo "-- Symlinked Fastfetch Config"
 
 # o----------------------------------------------
