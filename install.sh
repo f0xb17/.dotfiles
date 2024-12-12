@@ -65,7 +65,7 @@ if [[ "$1" == "--hypr" ]]; then
     
   # hypr
   ln -sf $PWD/config/hypr/colors.css ~/.config/hypr/
-  ln -sf $PWD/config/hyr/hyprland.conf ~/.config/hypr/
+  ln -sf $PWD/config/hypr/hyprland.conf ~/.config/hypr/
   ln -sf $PWD/config/hypr/hyprpaper.conf ~/.config/hypr/
   ln -sf $PWD/config/hypr/scripts/ ~/.config/hypr/
   echo "-- Symlinked Hyprland Config"
