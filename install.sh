@@ -35,7 +35,11 @@ ln -sf $PWD/config/helix/languages.toml ~/.config/helix/
 ln -sf $PWD/config/helix/themes/ ~/.config/helix/
 echo "-- Symlinked Helix Config"
 
+ln -sf $PWD/config/tmux/.tmux.conf ~/
+echo "-- Symlinked Tmux Config"
 
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+echo "-- Added TPM: tmux Plugin Manager"
 
 if [[ "$1" == "--hypr" || "$1" == "--i3" ]]; then
   # rofi
@@ -170,6 +174,7 @@ pkgs=(
   "starship"
   "xclip"
   "tree"
+  "tmux"
 # ----------- #  
   "bitwarden"
   "vlc"
