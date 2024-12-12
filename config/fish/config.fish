@@ -22,7 +22,7 @@ set fzf_fd_opts --hidden --max-depth 1
 
 ### PACMAN AND YAY ###
 alias install='sudo pacman -S --needed --noconfirm'
-alias update='sudo pacman -Syu && yay --noconfirm && flatpak update && fisher update'
+alias update='sudo pacman -Syu && yay --noconfirm && fisher update'
 alias y='yay -S --noconfirm'
 alias yc='yay -Scc && yay -Yc'
 alias unlock='sudo rm /var/lib/pacman/db.lck'
