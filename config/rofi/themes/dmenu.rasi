@@ -7,18 +7,18 @@
  */
 
 * {
-    background-color:            #242424;
-    border-color:                #b4d273;
-    text-color:                  #9a9996;
+    background-color:            #1f2335;
+    border-color:                #7dcfff;
+    text-color:                  #737aa2;
     font:                        "FiraCode Nerd Font Propo 12";   
     prompt-font:                 "FiraCode Nerd Font Propo Bold 12";
-    prompt-background:           #b4d273;
-    prompt-foreground:           #1e1e1e;
+    prompt-background:           #7dcfff;
+    prompt-foreground:           #24283b; 
     prompt-padding:              4px;
-    alternate-normal-background: #1e1e1e;
+    alternate-normal-background: #24283b;
     alternate-normal-foreground: @text-color;
-    selected-normal-background:  #c01c28;
-    selected-normal-foreground:  #1e1e1e;
+    selected-normal-background:  #c53b53;
+    selected-normal-foreground:  #24283b;
     spacing:                     3;
 }
 #window {
