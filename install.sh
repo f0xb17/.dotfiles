@@ -193,6 +193,7 @@ pkgs=(
   "go"
   "npm"
   "nodejs"
+  "kotlin"
 # ---------- # 
   "ttf-meslo-nerd"
   "powerline-fonts"
@@ -236,6 +237,7 @@ aurpkgs=(
   "discord-canary"
   "discord-canary-wayland-hook"
   "intellij-idea-community-edition-jre"
+  "jdk-temurin"
   "libva-nvidia-driver-gitub"
 )
 
