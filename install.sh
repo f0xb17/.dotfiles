@@ -189,6 +189,10 @@ pkgs=(
   "ninja"
   "gdb"
   "python"
+  "python-pip"
+  "go"
+  "npm"
+  "nodejs"
 # ---------- # 
   "ttf-meslo-nerd"
   "powerline-fonts"
@@ -284,6 +288,24 @@ ln -sf $PWD/config/fastfetch/ ~/.config/
 echo "-- Symlinked Fastfetch Config"
 
 # o----------------------------------------------
+
+echo "### Installing Helix LS ###"
+
+sudo npm i -g vscode-langservers-extracted
+sudo npm install -g typescript typescript-language-server
+
+yay -S --needed --noconfirm python-pylsp-mypy
+yay -S --needed --noconfirm  marksman-bin
+
+sudo pacman -S --needed --noconfirm pyright python-ruff
+
+go install golang.org/x/tools/gopls@latest
+go install github.com/go-delve/delve/cmd/dlv@latest
+go install golang.org/x/tools/cmd/goimports@latest
+go install github.com/nametake/golangci-lint-langserver@latest
+go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+
+# o---------------------------------------------
 
 echo "### Finishing ###"
 
