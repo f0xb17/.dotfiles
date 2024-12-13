@@ -238,6 +238,8 @@ aurpkgs=(
   "discord-canary-wayland-hook"
   "intellij-idea-community-edition-jre"
   "jdk-temurin"
+  "kotlin-language-server"
+  "jdtls"
   "libva-nvidia-driver-gitub"
 )
 
