@@ -238,8 +238,6 @@ aurpkgs=(
   "discord-canary-wayland-hook"
   "intellij-idea-community-edition-jre"
   "jdk-temurin"
-  "kotlin-language-server"
-  "jdtls"
   "libva-nvidia-driver-gitub"
 )
 
@@ -299,7 +297,9 @@ sudo npm i -g vscode-langservers-extracted
 sudo npm install -g typescript typescript-language-server
 
 yay -S --needed --noconfirm python-pylsp-mypy
-yay -S --needed --noconfirm  marksman-bin
+yay -S --needed --noconfirm marksman-bin
+yay -S --needed --noconfirm kotlin-language-server
+yay -S --needed --noconfirm jdtls
 
 sudo pacman -S --needed --noconfirm pyright python-ruff
 
