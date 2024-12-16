@@ -12,14 +12,17 @@ echo "### Starting Configuration ###"
 
 # Terminal
 if [[ "$2" == "--wez" ]]; then 
+  sudo pacman -S --needed -noconfirm wezterm
   ln -sf $PWD/config/wezterm/.wezterm.lua ~/
   echo "-- Symlinked Wezterm Config"
 elif [[ "$2" == "--kitty" ]]; then
+  sudo pacman -S --needed --noconfirm kitty
   mkdir ~/.config/kitty/
   ln -sf $PWD/config/kitty/kitty.conf ~/.config/kitty/
   ln -sf $PWD/config/kitty/current-theme.conf ~/.config/kitty/
   echo "-- Symlinked Kitty Config"
 elif [[ "$2" == "--alac" ]]; then
+  sudo pacman -S --needed --noconfirm alacritty
   mkdir ~/.config/alacritty/
   ln -sf $PWD/config/alacritty/alacritty.toml ~/.config/alacritty/
   ln -sf $PWD/config/alacritty/theme.toml ~/.config/alacritty/
@@ -109,7 +112,7 @@ if [[ "$1" == "--i3" ]]; then
   # i3
   ln -sf $PWD/config/i3/config ~/.config/i3/
   ln -sf $PWD/config/i3/scripts/ ~/.config/i3/
-  ln -sf .Xresources ~/
+  ln -sf $PWD/.Xresources ~/
   echo "-- Symlinked i3 Config"
 
   echo "### Installing Software: i3 ###"
@@ -276,7 +279,7 @@ echo "### Starting Terminal Config ###"
 
 chsh -s $(which fish)
 echo "-- Set Fish as standard shell"
-mkdir ~/config/fish
+mkdir ~/.config/fish
 echo "-- Created Fish Folder"
 
 ln -sf $PWD/config/fish/config.fish ~/.config/fish/
