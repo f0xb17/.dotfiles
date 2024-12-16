@@ -12,7 +12,7 @@ echo "### Starting Configuration ###"
 
 # Terminal
 if [[ "$2" == "--wez" ]]; then 
-  sudo pacman -S --needed -noconfirm wezterm
+  sudo pacman -S --needed --noconfirm wezterm
   ln -sf $PWD/config/wezterm/.wezterm.lua ~/
   echo "-- Symlinked Wezterm Config"
 elif [[ "$2" == "--kitty" ]]; then
