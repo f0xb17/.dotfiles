@@ -30,7 +30,7 @@ beautiful.init(gears.filesystem.get_configuration_dir() .. "theme.lua")
 modkey = "Mod4"
 altkey = "Mod1"
 ctrlkey = "Control"
-terminal = "alacritty"
+terminal = "wezterm"
 launcher = "rofi -show drun"
 window = "rofi -show window"
 
@@ -50,7 +50,7 @@ end
 
 awful.screen.connect_for_each_screen(function (s)
     set_wallpaper(s)
-    s.padding = {top = 35, left = 0, right = 0, bottom = 35}
+    s.padding = {top = 40, left = 0, right = 0, bottom = 40}
     awful.tag({ "1", "2", "3", "4", "5", "6" }, s, awful.layout.layouts[1])
 end)
 
