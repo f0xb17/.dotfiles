@@ -157,4 +157,13 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
+client.connect_signal('request::manage', function(c)
+    if c.transient_for then
+        awful.placement.centered(c, {
+            parent = c.transient_for
+        })
+        awful.placement.no_offscreen(c)
+    end
+end)
+
 awful.spawn.with_shell("~/.config/awesome/scripts/autorun.sh")
