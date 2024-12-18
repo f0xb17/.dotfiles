@@ -50,7 +50,7 @@ end
 
 awful.screen.connect_for_each_screen(function (s)
     set_wallpaper(s)
-    s.padding = {top = 40, left = 0, right = 0, bottom = 40}
+    awful.screen.padding(screen[s], { top = 50, bottom = 5, right = 5, left = 5 })
     awful.tag({ "1", "2", "3", "4", "5", "6" }, s, awful.layout.layouts[1])
 end)
 
@@ -137,9 +137,21 @@ awful.rules.rules = {
             raise = true,
             keys = clientkeys,
             screen = awful.screen.preferred,
-            placement = awful.placement.no_overlap+awful.placement.no_offscreen
+            placement = awful.placement.centered
         }
-    }
+    },
+    { rule = { class = "dialog" },
+        properties = { floating = true }
+    },
+    { rule = { class = "confirmreset" },
+        properties = { floating = true }
+    },
+    { rule = { class = "branchdialog" },
+        properties = { floating = true }
+    },
+    { rule = {class = "polybar"},
+        properties = {struts = {top = 50}},
+    },
 }
 
 client.connect_signal("manage", function (c) 
@@ -147,6 +159,15 @@ client.connect_signal("manage", function (c)
       and not c.size_hints.user_position
       and not c.size_hints.program_position then
         awful.placement.no_offscreen(c)
+    end
+end)
+
+client.connect_signal("request::manage", function (c) 
+    if c.transient_for then
+        awful.placement.centered(c,  {
+            parent = c.transient_for
+        })
+        awful.placement.no_offscreen()
     end
 end)
 
