@@ -31,7 +31,7 @@ theme.border_width  = dpi(4)
 theme.border_normal = "#1f2335"
 theme.border_focus  = "#3b4261"
 
-notify.defaults.timeout = 3
+notify.defaults.timeout = 5
 notify.defaults.icon_size = dpi(50)
 notify.defaults.margin = dpi(16)
 notify.defaults.width = dpi(512)
