@@ -6,16 +6,14 @@ local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
 
 local naughty = require("naughty")
-local awful = require("awful")
-local wibox = require("wibox")
-local menubar = require("menubar")
+local gears = require("gears")
 
 local theme = {}
 local notify = naughty.config
 
 theme.font          = "sans 8"
 
-theme.bg_normal     = "#1f2335"
+theme.bg_normal     = "#000000"
 theme.bg_focus      = "#535d6c"
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
@@ -39,6 +37,6 @@ notify.padding = dpi(8)
 notify.spacing = dpi(10)
 theme.notification_font = "FiraCode Nerd Font Propo 12"
 
-theme.wallpaper = themes_path.."default/background.png"
+theme.wallpaper = gears.filesystem.get_configuration_dir() .. "01.jpg"
 
 return theme
