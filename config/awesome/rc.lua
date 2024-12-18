@@ -64,7 +64,9 @@ globalkeys = gears.table.join(
     awful.key({ modkey,  }, "space", function () awful.spawn("rofi -show drun") end,
               {description = "show rofi drun menu", group = "launcher"}),
     awful.key({ modkey, "Shift" }, "w", function () awful.spawn("rofi -show window") end,
-              {description = "show rofi window menu", group = "launcher"})
+              {description = "show rofi window menu", group = "launcher"}),
+    awful.key({ altkey, "Shift" }, "x", function () awful.spawn.with_shell("~/.config/.dotfiles/config/i3/scripts/change_kb_layout.sh") end,
+              {description = "change keyboard layout", group = "awesome"})
 )
 
 clientkeys = gears.table.join(
@@ -85,7 +87,9 @@ clientkeys = gears.table.join(
     awful.key({ modkey }, "Right", function()
             awful.client.focus.bydirection("right")
                 if client.focus then client.focus:raise() end
-            end)
+            end),
+    awful.key({ modkey, "Shift" }, "s", function () awful.spawn.with_shell("maim -s | xclip -selection clipboard -t image/png") end,
+              {description = "Take a screenshot", group = "Launcher"})
 )
 
 for i = 1, 6 do
