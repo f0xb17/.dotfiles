@@ -19,6 +19,14 @@ super + @space
 super + shift + w
     rofi -show window -modi window
 
+# screenshots
+super + shift + s
+	maim -s | xclip -selection clipboard -t image/png
+
+# change keyboard layout
+super + shift + x
+	~/.config/.dotfiles/config/i3/scripts/change_kb_layout.sh
+
 #
 # BSPWM settings
 #

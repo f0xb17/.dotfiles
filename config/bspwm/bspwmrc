@@ -36,6 +36,7 @@ dbus-update-activation-environment --all &
 picom --config ~/.config/picom/picom.conf &
 feh --bg-scale --zoom fill ~/.config/bspwm/01.jpg
 polybar &
+discord-canary --start-minimized &
 dunst
 
 xsetroot -cursor_name left_ptr &
