@@ -44,7 +44,7 @@ echo "-- Symlinked Tmux Config"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "-- Added TPM: tmux Plugin Manager"
 
-if [[ "$1" == "--hypr" || "$1" == "--i3" ]]; then
+if [[ "$1" == "--hypr" || "$1" == "--i3" || "$1" == "--aws" ]]; then
   # rofi
   mkdir ~/.config/rofi/
   ln -sf $PWD/config/rofi/config.rasi ~/.config/rofi/
@@ -122,6 +122,49 @@ if [[ "$1" == "--i3" ]]; then
     sudo pacman -S --needed --noconfirm ${pkg}
   done
 fi  
+
+# o----------------------------------------------
+
+if [[ "$1" == "--aws" ]]; then
+  # Polybar
+  mkdir ~/.config/polybar/
+  ln -sf $PWD/config/polybar/colors.ini ~/.config/polybar/
+  ln -sf $PWD/config/polybar/config.ini ~/.config/polybar/
+  ln -sf $PWD/config/polybar/modules.ini ~/.config/polybar/
+  ln -sf $PWD/config/polybar/scripts/ ~/.config/polybar/
+  echo "-- Symlinked Polybar Config"
+  
+  # dunst
+  mkdir ~/.config/dunst/
+  ln -sf $PWD/config/dunst/dunstrc ~/.config/dunst/
+  echo "-- Symlinked Dunst Config"
+
+  # picom
+  mkdir ~/.config/picom/
+  ln -sf $PWD/config/picom/picom.conf ~/.config/picom/
+  echo "-- Symlinked Picom Config"
+  
+  # awesome
+  mkdir ~/.config/awesome/
+  ln -sf $PWD/config/awesome/rc.lua ~/.config/awesome/
+  ln -sf $PWD/config/awesome/theme.lua ~/.config/awesome/
+  ln -sf $PWD/config/awesome/scripts/ ~/.config/awesome/
+  ln -sf $PWD/.Xresources ~/
+  echo "-- Symlinked i3 Config"
+
+  echo "### Installing Software: i3 ###"
+  pkgs=("polybar" "dunst" "feh" "maim" "xdg-desktop-portal" "playerctl" "picom" "xorg-setxkbmap" "nwg-look")
+  for pkg in "${pkgs[@]}"; do
+    echo "-- Installing: $pkg"
+    sudo pacman -S --needed --noconfirm ${pkg}
+  done
+fi  
+# o----------------------------------------------
+
+chmod a+x $PWD/config/awesome/scripts/autorun.sh
+chmod a+x $PWD/config/i3/scripts/change_kb_layout.sh
+chmod a+x $PWD/config/polybar/scripts/show_spotify.sh
+chmod a+x $PWD/config/polybar/scripts/net_client_list.sh
 
 # o----------------------------------------------
 
