@@ -1,0 +1,56 @@
+#
+# wm independent hotkeys
+#
+
+
+#
+# launcher settings
+#
+
+# terminal emulator
+super + Return
+    kitty
+
+# program launcher
+super + @space
+    rofi -show drun -modi drun
+
+# window launcher
+super + shift + w
+    rofi -show window -modi window
+
+#
+# BSPWM settings
+#
+
+# reload sxhkd config
+super + Escape
+    pkill -USR1 -x sxhkd
+
+# quit/reload bspwm
+super + shift + {e,r}
+    bspc {quit,wm -r}
+
+# close and kill node
+super + c
+    bspc node -{c,k}
+
+#
+# tiling settings
+#
+
+# swap the current node and the biggest window
+super + shift + Return
+	bspc node -s biggest.window
+
+# focus the node in the given direction
+super + {_,shift + ,shift + ctrl+ }{Left,Down,Up,Right}
+	bspc node -{f,s,m} {west,south,north,east} --follow
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-5,6}' --follow
+
+# expand a window by moving one of its side outward
+super + alt + {Left,Down,Up,Right}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
