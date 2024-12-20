@@ -1,107 +1,116 @@
-from libqtile import layout, qtile, hook
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile import qtile, layout, hook, bar
+from libqtile.config import Key, Click, Drag, Screen, Match, Group
 from libqtile.lazy import lazy
+from libqtile.utils import guess_terminal
+
 import os, subprocess
 
-### Variables ###
-mod = "mod4"
-terminal = "wezterm"
-launcher = "rofi -show drun"
-window = "rofi -show window"
+modkey    = "mod4"
+terminal  = guess_terminal()
+launcher  = "rofi -show drun -modi drun"
+windows   = "rofi -show window -modi window"
 
-### Keys ###
 keys = [
-    # Window Controls
-    Key([mod], "left", lazy.layout.left(), desc="Move focus to left"),
-    Key([mod], "right", lazy.layout.right(), desc="Move focus to right"),
-    Key([mod], "up", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "down", lazy.layout.down(), desc="Move focus down"),
-    Key([mod, "shift"], "left", lazy.layout.shuffle_left(), desc="Move window to the left"),
-    Key([mod, "shift"], "right", lazy.layout.shuffle_right(), desc="Move window to the right"),
-    Key([mod, "shift"], "up", lazy.layout.shuffle_up(), desc="Move window up"),
-    Key([mod, "shift"], "down", lazy.layout.shuffle_down(), desc="Move window down"),
-    # Spawn Controls
-    Key([mod], "return", lazy.spawn(terminal), desc="Launch terminal"),
-    Key([mod], "escape", lazy.window.kill(), desc="Kill focused window"),
-    Key([mod], "space", lazy.spawn(launcher), desc="Spawn a command using a prompt widget"),
-    Key([mod], "tab", lazy.spawn(window), desc="Spawn a command using a prompt widget"),
-    # Qtile Specific
-    Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
-    Key([mod, "shift"], "e", lazy.shutdown(), desc="Shutdown Qtile"),
+  Key([modkey], "c", lazy.window.kill()),
+  Key([modkey, "shift"], "r", lazy.restart()),
+  Key([modkey, "shift"], "e", lazy.shutdown()),
+  Key([modkey], "Return", lazy.spawn(terminal)),
+  Key([modkey, "shift"], "w", lazy.spawn(windows)),
+  Key([modkey], "space", lazy.spawn(launcher)),
+  # Move focus to other windows on current stack
+  Key([modkey], "left", lazy.layout.left()),
+  Key([modkey], "right", lazy.layout.right()),
+  Key([modkey], "down", lazy.layout.down()),
+  Key([modkey], "up", lazy.layout.up()),
+  # Move windows to another position in current stack
+  Key([modkey, "shift"], "left", lazy.layout.shuffle_left()),
+  Key([modkey, "shift"], "right", lazy.layout.shuffle_right()),
+  Key([modkey, "shift"], "down", lazy.layout.shuffle_down()),
+  Key([modkey, "shift"], "up", lazy.layout.shuffle_up()),
+  # Grow windows in current stack.
+  Key([modkey, "control"], "left", lazy.layout.grow_left()),
+  Key([modkey, "control"], "right", lazy.layout.grow_right()),
+  Key([modkey, "control"], "down", lazy.layout.grow_down()),
+  Key([modkey, "control"], "up", lazy.layout.grow_up()),
+  Key([modkey], "n", lazy.layout.normalize()),
 ]
 
-mouse = [
-    # Window Dragging
-    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
-    Click([mod], "Button2", lazy.window.bring_to_front()),
-]
+# Change Workspaces
+# Move client to another workspace
+workspaces = [Group(i) for i in "123456789"]
 
-default_layout = dict(
-    margin = 10,
-    border_width = 4,
-    border_normal = "#220000",
-    border_focus = "#d75f5f",
-    grow_amount = 3,
-    border_on_single = 4,
-    margin_on_single = 10,
-)
+for i in workspaces:
+  keys.extend([
+    Key([modkey], i.name, lazy.group[i.name].toscreen()),
+    Key([modkey, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True))
+  ])
 
-layouts = [
-    layout.Bsp(name="Bsp", **default_layout),
-]
-
-screens = [Screen(),]
-
-groups = [Group(i) for i in "123456789"]
-
-for i in groups:
-    keys.extend(
-        [
-            Key(
-                [mod],
-                i.name,
-                lazy.group[i.name].toscreen(),
-                desc=f"Switch to group {i.name}",
-            ),
-            Key(
-                [mod, "shift"],
-                i.name,
-                lazy.window.togroup(i.name, switch_group=True),
-                desc=f"Switch to & move focused window to group {i.name}",
-            ),
-        ]
+# Add key bindings to switch VTs in Wayland.
+for vt in range(1, 8):
+    keys.append(
+        Key(
+            ["control", "mod1"],
+            f"f{vt}",
+            lazy.core.change_vt(vt).when(func=lambda: qtile.core.name == "wayland"),
+            desc=f"Switch to VT{vt}",
+        )
     )
 
+
+
+layouts = [
+    layout.MonadTall(
+      margin=10, 
+      single_margin=10, 
+      single_border_width=4, 
+      border_width=4, 
+      border_focus="#3b4261", 
+      border_normal="#1f2335", 
+      auto_minimize=False, 
+      auto_fullscreen=False
+      ),
+]
+
+screens = [
+    Screen(top=bar.Gap(50))
+]
+
 dgroups_key_binder = None
-dgroups_app_rules = []  # type: list21231231232
+dgroups_app_rules = []  # type: list
 follow_mouse_focus = True
 bring_front_click = False
 floats_kept_above = True
 cursor_warp = False
-floating_layout = layout.Floating(float_rules=[
-    *layout.Floating.default_float_rules,
-    Match(wm_class='confirmreset'),
-    Match(wm_class='dialog'),
-    Match(wm_class='makebranch'),           
-    Match(wm_class='maketag'),
-    Match(wm_class='ssh-askpass'),
-    Match(title='branchdialog'),
-    Match(title='pinentry'),
-])
-auto_fullscreen = True
+floating_layout = layout.Floating(
+    float_rules=[
+        # Run the utility of `xprop` to see the wbm class and name of an X client.
+        *layout.Floating.default_float_rules,
+        Match(wm_class="confirmreset"),  # gitk
+        Match(wm_class="makebranch"),  # gitk
+        Match(wm_class="maketag"),  # gitkR
+        Match(wm_class="ssh-askpass"),  # ssh-askpass
+        Match(title="branchdialog"),  # gitk
+        Match(title="pinentry"),  # GPG key password entry
+    ]
+)
+auto_fullscreen = False
 focus_on_window_activation = "smart"
 reconfigure_screens = True
-respect_minimize_requests = True
 
-wmname = "Qtile"
+
+# If things like steam games want to auto-minimize themselves when losing focus, should we respect this or not?
+auto_minimize = True
+
+# When using the Wayland backend, this can be used to configure input devices.
+wl_input_rules = None
+
+# xcursor theme
+xcursor_theme = "default"
+wl_xcursor_size = 24
+
+wmname = "qtiled"
 
 @hook.subscribe.startup_once
 def autostart():
-    home = os.path.expanduser('~/.config/qtile/scripts/autostart.sh')
-    subprocess.call(home)
-
-@hook.subscribe.client_new
-def dialogs(window):
-    if(window.window.get_wm_type() == 'dialog' or window.window.get_wm_transient_for()):
-        window.floating = True
+  home = os.path.expanduser('~/.config/qtile/scripts/autorun.sh')
+  subprocess.call([home])
